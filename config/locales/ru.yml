@@ -1,0 +1,10 @@
+ru:
+  setting_general: 'Общие настройки'
+  manage_relation: 'Настройки связей'
+  invers_name: 'Обратная связь'
+  new_relation_type: 'Новый тип связи'
+  edit_relation_type: 'Редактирование типа связи'
+  order_index: 'Порядок сортировки'
+  text_are_you_sure: 'Вы уверены?'
+  label_related_issues: 'Связанные задачи'
+  save: 'Принять'

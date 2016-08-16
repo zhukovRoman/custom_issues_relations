@@ -1,0 +1,6 @@
+$('#custom_relations').html('<%= escape_javascript(render :partial => 'custom_relations/table') %>');
+<% if @relation.errors.empty? %>
+  $('#custom_relation_issue_to_id').val('');
+  $('#custom_relation_issue_to_id').focus();
+<% end %>
+$('#new-custom-relation-form').show();

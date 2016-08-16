@@ -1,0 +1,20 @@
+<%= form_for @relation,  html: {class: "nifty_form"} do |f| %>
+
+    <% if @relation.errors.any? %>
+        <div id="error_explanation">
+          <ul>
+            <% @relation.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <%= l(:field_name)%>
+    <%= f.text_field :title %>
+    <%= l(:order_index)%>
+    <%= f.text_field :order_index %>
+    <%= l(:invers_name)%>
+    <%= f.select(:reverse_id, options_for_select(CustomRelationType.order(:order_index).all.collect {|p| [ p.title, p.id ] }), { include_blank: true }) %>
+    <%= f.submit l(:save) %>
+<% end %>

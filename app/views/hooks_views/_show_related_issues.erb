@@ -1,0 +1,20 @@
+<hr />
+<div id="custom_relations">
+  <%= render :partial => 'custom_relations/table' %>
+</div>
+
+<% @custom_relation = CustomRelation.new %>
+<%= form_for @custom_relation, {:as => :custom_relation, :remote => true,
+                              :html => {:id => 'new-custom-relation-form', :style => 'display: none;'}
+                      } do |f| %>
+    <%= error_messages_for 'custom_relation' %>
+    <%= f.hidden_field :issue_from_id, value: "#{@issue.id}"%>
+    <p><%= f.select :custom_relation_type_id, options_for_select(CustomRelationType.order(:order_index).all.collect {|p| [ p.title, p.id ] }), {}%>
+      <%= l(:label_issue) %> #<%= f.text_field :issue_to_id, :size => 50 %>
+      <%= submit_tag l(:button_add) %>
+      <%= link_to_function l(:button_cancel), '$("#new-custom-relation-form").hide();'%>
+    </p>
+
+    <%= javascript_tag "observeAutocompleteField('custom_relation_issue_to_id', '#{escape_javascript auto_complete_issues_path(:project_id => @project, :scope => (Setting.cross_project_issue_relations? ? 'all' : nil))}')" %>
+
+<% end %>

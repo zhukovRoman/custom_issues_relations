@@ -1,0 +1,10 @@
+en:
+  setting_general: 'Common settings'
+  manage_relation: 'Manage relations'
+  invers_name: 'Inverse relations'
+  new_relation_type: 'New relation type'
+  edit_relation_type: 'Edit relation type'
+  order_index: 'Order'
+  text_are_you_sure: 'Are you sure?'
+  label_related_issues: 'Related issues'
+  save: 'Apply'

@@ -1,0 +1,28 @@
+<h3><%= l(:manage_relation)%></h3>
+
+<table class="list issues">
+  <thead>
+  <tr>
+    <th><%= l(:field_name) %></th>
+    <th><%= l(:invers_name) %></th>
+    <th align="center" style="width:10%;"></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% CustomRelationType.order(:order_index).all.each do |rel| %>
+      <tr id="<%= rel.id %>" class="<%= cycle('odd', 'even') %> hascontextmenu">
+        <td><%= rel.title %></td>
+        <td><%= rel.revers_relation_type_title %></td>
+        <td class="buttons">
+          <%= link_to l(:button_edit), edit_custom_relation_type_path(rel),
+                      class: 'icon icon-edit' %>
+          <%= link_to l(:button_delete), custom_relation_type_path(ids: rel), method: :delete,
+                      confirm: l(:text_are_you_sure), class: 'icon icon-del' %>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+
+<%= link_to l(:new_relation_type), new_custom_relation_type_path %>
